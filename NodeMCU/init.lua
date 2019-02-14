@@ -28,7 +28,7 @@ tmr.alarm(1, 1000, tmr.ALARM_AUTO, function()   --将nodeMCU连入wifi，并获�
     else
         print('IP is ' .. wifi.sta.getip())
         sv = tls.createConnection()      --连入网络后，建立一个TLS客户端
-        sv:connect(8080, "192.168.1.13")    --连接到用nodejs建立的TLS服务器
+        sv:connect(8080, "192.168.1.16")    --连接到用nodejs建立的TLS服务器
         sv:on("receive", receiver)      --注册回调事件
         tmr.stop(1)
     end
