@@ -9,7 +9,7 @@ gpio.mode(led1, gpio.OUTPUT)
 gpio.mode(led2, gpio.OUTPUT)
 gpio.mode(button, gpio.INT, gpio.PULLUP)    --将pin3设为中断模式
         
-function receiver(socket, string)    --获取TCP服务器返回数据时的回调
+function receiver(socket, string)    --获取TLS服务器返回数据时的回调
     print(string)
     if (string == '1') then
         gpio.write(led1, gpio.LOW)
