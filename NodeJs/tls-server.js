@@ -51,6 +51,7 @@ let server = tls.createServer(options, function (socket) {
             clientsInfo.forEach(function (item, index) {
                 if (adminArray[0] === item.Name) {
                     if (adminArray[1] === 'OPEN') {
+                        logString = `${logString} Request Allow\n`;
                         sockets[index].write('1');
                     }
                 }
@@ -71,15 +72,21 @@ let server = tls.createServer(options, function (socket) {
     }
     // 一旦客户端断开连接便发出警告
     socket.on('close', function () {
+        // shutdown(socket, SHUT_WR);
+        // socket.close();
         let index = sockets.indexOf(socket);
         sockets.splice(index, 1);
         clientsInfo.splice(index, 1);
         console.log(`WARNING:Connection[${clientName}] has closed,LOSING CONTROL...`);
     });
+    // 客户端强制关闭时接住error不会导致服务器崩溃
+    socket.on('error', function (err) {
+        console.log(`Connection[${clientName}] error: ${err.message}`);
+    })
 });
 
 server.on('error', function (err) {
-    console.log(`Server error:${err.message}`);
+    console.log(`Server error: ${err.message}`);
 });
 
 server.on('close', function () {

@@ -1,0 +1,5 @@
+Connection[TEST-CLIENT] sent:"open"[2019-02-14 21:43:19] Request Allow
+Connection[TEST-CLIENT] sent:"open"[2019-02-14 21:43:24] Request Allow
+Connection[TEST-CLIENT] sent:"open"[2019-02-14 21:43:28] Request Allow
+Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-14 21:43:43] Request Allow
+Connection[TEST-CLIENT] sent:"open"[2019-02-14 21:43:49] Request Allow
