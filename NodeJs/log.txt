@@ -1,1 +1,1 @@
-Connection[ADMIN]sent:"TEST-CLIENT|OPEN"[2019-02-12 13:41:41]
+Connection[TEST-CLIENT]sent:"open"[2019-02-14 19:28:34] Request Allow

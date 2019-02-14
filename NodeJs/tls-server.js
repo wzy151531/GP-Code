@@ -8,9 +8,9 @@ var clientsInfo = [{IP: '::ffff:192.168.1.13', Name: 'ADMIN'}, {IP: '::ffff:192.
 // 聚合所有客户端
 var sockets = [];
 var options = {
-    key: fs.readFileSync('server-key.pem'),
-    cert: fs.readFileSync('server-cert.pem'),
-    ca: [fs.readFileSync('server-cert.pem')],
+    key: fs.readFileSync('openssl/server-key.pem'),
+    cert: fs.readFileSync('openssl/server-cert.pem'),
+    ca: [fs.readFileSync('openssl/server-cert.pem')],
     // 关闭客户端认证
     requestCert: false,
     rejectUnauthorized: false
