@@ -1,18 +1,18 @@
 var tls = require('tls');
 var fs = require('fs');
 var options = {
-    host: '192.168.1.16',
+    host: '192.168.1.11',
     port: 8080,
-    // key: fs.readFileSync('client-key.pem'),
-    // cert: fs.readFileSync('client-cert.pem'),
-    ca: [fs.readFileSync('openssl/server-cert.pem')],
+    key: fs.readFileSync('openssl/ADMIN-client-key.pem'),
+    cert: fs.readFileSync('openssl/ADMIN-client-cert.pem'),
+    ca: [fs.readFileSync('openssl/ca-cert.pem')],
     rejectUnauthorized: false
 };
-var client = tls.connect(options, function () {
+var client = tls.connect(options, () => {
     console.log(`Client connected ${client.authorized ? 'authorized' : 'unauthorized'}`);
     process.stdin.setEncoding('utf8');
     process.stdin.resume();
-    process.stdin.on('readable', function () {
+    process.stdin.on('readable', () => {
         var chunk = process.stdin.read();
         if (typeof chunk === 'string') {
             chunk = chunk.slice(0, -2);
@@ -31,6 +31,7 @@ var client = tls.connect(options, function () {
     });
 });
 client.setEncoding('utf8');
-client.on('data', function (data) {
+client.on('data', (data) => {
     console.log(`Got Data: ${data}`);
 });
+client.write('ADMIN');

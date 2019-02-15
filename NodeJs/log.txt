@@ -1,5 +1,10 @@
-Connection[TEST-CLIENT] sent:"open"[2019-02-14 21:43:19] Request Allow
-Connection[TEST-CLIENT] sent:"open"[2019-02-14 21:43:24] Request Allow
-Connection[TEST-CLIENT] sent:"open"[2019-02-14 21:43:28] Request Allow
-Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-14 21:43:43] Request Allow
-Connection[TEST-CLIENT] sent:"open"[2019-02-14 21:43:49] Request Allow
+Connection[ADMIN] sent:"1"[2019-02-15 21:03:21] Request Deny
+Connection[ADMIN] sent:"2"[2019-02-15 21:03:32] Request Deny
+Connection[TEST-CLIENT] sent:"open"[2019-02-15 21:09:48] Request Allow
+Connection[TEST-CLIENT] sent:"open"[2019-02-15 21:09:52] Request Allow
+Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-15 21:17:32] Request Allow
+Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-15 21:17:53] Request Allow
+Connection[TEST-CLIENT] sent:"open"[2019-02-15 21:18:17] Request Allow
+Connection[TEST-CLIENT] sent:"open"[2019-02-15 21:18:24] Request Allow
+Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-15 21:18:27] Request Allow
+Connection[ADMIN] sent:"1111"[2019-02-15 21:18:51]
