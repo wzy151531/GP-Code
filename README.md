@@ -9,3 +9,5 @@ repair the problem that makes server break down caused by the compulsive shutdow
 update openssl<br>
 add the ADMIN's authorization<br>
 repair the problem that log.txt has been covered caused by the server's breakdown<br>
+### 2019-02-16
+add ADMIN command password for the request of managing other clients(code maybe confused because of the unknown problem of windows that the Windows PowerShell only can send request once)<br>

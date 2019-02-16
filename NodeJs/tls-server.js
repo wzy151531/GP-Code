@@ -34,8 +34,42 @@ let server = tls.createServer(options, (socket) => {
             clientsInfo.push(certainClientInfo);
             console.log(`Remote connection[${clientName}] connected(${socket.authorized ? 'Authorized' : 'Unauthorized'})`);
             console.log(`Data have been ${socket.encrypted ? 'encrypted' : 'unencrypted'}`);
+            if (socket.authorized) {
+                // 管理端开门操作需要输入密码来获取权限
+                socket.write('Enter the password for command:');
+                console.log('Waiting for the password...');
+                // 等待下一次管理端的信息输入来获取密码
+                socket.on('data', (data) => {
+                    let dataString = data.toString();
+                    let logString = `Connection[${clientName}] sent:"${dataString}"[${moment().format('YYYY-MM-DD HH:mm:ss')}]`;
+                    // 密码正确，执行开门操作
+                    if (dataString === '123456') {
+                        socket.write('PASSWORD CORRECT!Command Allow');
+                        console.log('PASSWORD CORRECT!Command Allow');
+                        clientsInfo.forEach((item, index) => {
+                            if ('TEST-CLIENT' === item.Name) {
+                                logString = `${logString} Request Allow\n`;
+                                sockets[index].write('1');
+                            }
+                        })
+                    } else {
+                        socket.write('PASSWORD ERROR!Command Deny');
+                        console.log('PASSWORD ERROR!Command Deny');
+                        logString = `${logString} Request Deny\n`;
+                    }
+                    // 将客户端socket可读流中的信息处理后写入log文件
+                    fs.appendFile('log.txt', logString, (err) => {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            console.log('Data have been wrote in ./log.txt');
+                        }
+                    })
+                });
+            }
             // 客户端之后发送的信息由服务器进行处理并返回，且将信息写入log文件
-        } else {
+            // 由于电脑自身问题，管理端无法发送第二次消息，故第二次接收到的消息只接受客户端
+        } else if (!socket.authorized) {
             let logString = `Connection[${clientName}] sent:"${dataString}"[${moment().format('YYYY-MM-DD HH:mm:ss')}]`;
             if (dataString === 'open') {
                 logString = `${logString} Request Allow\n`;

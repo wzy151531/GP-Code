@@ -11,7 +11,7 @@ var options = {
 var client = tls.connect(options, () => {
     console.log(`Client connected ${client.authorized ? 'authorized' : 'unauthorized'}`);
     process.stdin.setEncoding('utf8');
-    process.stdin.resume();
+    // process.stdin.resume();
     process.stdin.on('readable', () => {
         var chunk = process.stdin.read();
         if (typeof chunk === 'string') {
