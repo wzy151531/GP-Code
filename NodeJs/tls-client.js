@@ -1,7 +1,7 @@
 var tls = require('tls');
 var fs = require('fs');
 var options = {
-    host: '192.168.1.11',
+    host: '192.168.1.16',
     port: 8080,
     key: fs.readFileSync('openssl/ADMIN-client-key.pem'),
     cert: fs.readFileSync('openssl/ADMIN-client-cert.pem'),
@@ -35,3 +35,7 @@ client.on('data', (data) => {
     console.log(`Got Data: ${data}`);
 });
 client.write('ADMIN');
+client.write('TEST-CLIENT|OPEN');
+client.write('12345');
+client.write('TEST-CLIENT|OPEN');
+client.write('123456');
