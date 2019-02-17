@@ -1,19 +1,11 @@
-Connection[TEST-CLIENT] sent:"open"[2019-02-17 00:05:38] Request Allow
-Connection[ADMIN] sent:"123456"[2019-02-17 00:05:42] Request Allow
-Connection[TEST-CLIENT] sent:"open"[2019-02-17 00:05:55] Request Allow
-Connection[TEST-CLIENT] sent:"open"[2019-02-17 00:06:25] Request Allow
-Connection[ADMIN] sent:"12345"[2019-02-17 00:06:30] Request Deny
-Connection[ADMIN] sent:"12345"[2019-02-17 10:03:00] Request Deny
-Connection[ADMIN] sent:"fuck"[2019-02-17 10:04:19] Request Deny
-Connection[ADMIN] sent:"12345"[2019-02-17 10:05:39] Request Deny
-Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-17 10:05:59] Request Deny
-Connection[ADMIN] sent:"12345"[2019-02-17 10:12:34] Request Deny
-Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-17 10:12:48] Request Deny
-Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-17 10:36:26]Connection[ADMIN] sent:"12345"[2019-02-17 10:36:26] Request Deny
-Connection[ADMIN] sent:"123456"[2019-02-17 10:36:26] Request Allow
-Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-17 10:36:26]
-Connection[TEST-CLIENT] sent:"open"[2019-02-17 10:39:23] Request Allow
-Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-17 10:39:25] Response for password
-Connection[ADMIN] sent:"12345"[2019-02-17 10:39:25] Request Deny
-Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-17 10:39:25] Response for password
-Connection[ADMIN] sent:"123456"[2019-02-17 10:39:25] Request Allow
+Connection[ADMIN] sent:"CLIENT1|OPEN"[2019-02-17 19:15:31];Client does not exist
+Connection[ADMIN] sent:"CLIENT2|OPEN"[2019-02-17 19:15:32];Client does not exist
+Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-17 19:15:33];Response for password
+Connection[ADMIN] sent:"123456"[2019-02-17 19:15:34] Request for access of [TEST-CLIENT];Request Allow
+Connection[TEST-CLIENT] sent:"open"[2019-02-17 19:15:49];Request Allow
+Connection[TEST-CLIENT] sent:"open"[2019-02-17 19:15:55];Request Allow
+Connection[ADMIN] sent:"CLIENT1|OPEN"[2019-02-17 19:19:35];Client does not exist
+Connection[ADMIN] sent:"CLIENT2|OPEN"[2019-02-17 19:19:36];Client does not exist
+Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-17 19:19:37];Response for password
+Connection[ADMIN] sent:"123456"[2019-02-17 19:19:38] Request for access of [TEST-CLIENT];Request Allow
+Connection[TEST-CLIENT] sent:"open"[2019-02-17 19:19:43];Request Allow

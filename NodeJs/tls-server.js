@@ -2,10 +2,8 @@ let tls = require('tls');
 let fs = require('fs');
 let moment = require('moment');
 moment.locale('zh-cn');
-// 聚合所有客户端的IP地址和名称
+// 聚合所有客户端的IP地址和名称和socket
 let clientsInfo = [];
-// 聚合所有客户端的socket
-let sockets = [];
 let options = {
     key: fs.readFileSync('openssl/server-key.pem'),
     cert: fs.readFileSync('openssl/server-cert.pem'),
@@ -17,7 +15,10 @@ let options = {
 
 let server = tls.createServer(options, (socket) => {
     let cnt = 1;
+    // 监听模式标志位
     let askForPwd = 0;
+    // 管理端要管理的客户端对象
+    let clientManaged = {};
     let clientName = 'UNKNOWN';
     socket.setEncoding('utf8');
     socket.write("Welcome!\n");
@@ -26,8 +27,6 @@ let server = tls.createServer(options, (socket) => {
         // 客户端第一次发送信息给服务器，申明自己的身份
         if (cnt === 1) {
             clientName = dataString;
-            // 将新连入的客户端放进sockets数组
-            sockets.push(socket);
             let certainClientInfo = {};
             certainClientInfo.socket = socket;
             certainClientInfo.IP = socket.remoteAddress;
@@ -39,58 +38,67 @@ let server = tls.createServer(options, (socket) => {
         } else {
             let logString = `Connection[${clientName}] sent:"${dataString}"[${moment().format('YYYY-MM-DD HH:mm:ss')}]`;
             if (dataString === 'open') {
-                logString = `${logString} Request Allow\n`;
+                logString = `${logString};Request Allow\n`;
                 console.log(`Got[${clientName}]: ${dataString}`);
                 socket.write('1');
                 // 管理端可以通过发送指定消息操作任意客户端
             } else if (clientName === 'ADMIN' && socket.authorized) {
                 console.log(`Got[${clientName}]: ${dataString}`);
-                // 若下一次数据监听为等待密码
+                // 若下一次数据监听为密码监听
                 if (askForPwd) {
                     // 密码正确，执行开门操作
                     if (dataString === '123456') {
                         socket.write('PASSWORD CORRECT!Command Allow');
                         console.log('PASSWORD CORRECT!Command Allow');
-                        clientsInfo.forEach((item, index) => {
-                            if ('TEST-CLIENT' === item.Name) {
-                                logString = `${logString} Request Allow\n`;
-                                sockets[index].write('1');
-                            }
-                        })
+                        logString = `${logString} Request for access of [${clientManaged.Name}];Request Allow\n`;
+                        clientManaged.socket.write('1');
                     } else {
                         socket.write('PASSWORD ERROR!Command Deny');
                         console.log('PASSWORD ERROR!Command Deny');
-                        logString = `${logString} Request Deny\n`;
+                        logString = `${logString} Request for access of [${clientManaged.Name}];Request Deny\n`;
                     }
+                    // 将下一次数据监听改为普通监听
                     askForPwd = 0;
-                }
-                // 将管理端发送来的消息以'|'符号进行分割存入数组，如TEST-CLIENT|OPEN
-                let adminArray = dataString.split('|');
-                clientsInfo.forEach((item, index) => {
-                    if (adminArray[0] === item.Name) {
-                        if (adminArray[1] === 'OPEN') {
-                            // logString = `${logString} Request Allow\n`;
-                            // sockets[index].write('1');
-                            socket.write('Enter the password for command:');
-                            console.log(`Waiting for the password to manage ${item.Name}...`);
-                            logString = `${logString} Response for password\n`;
-                            askForPwd = 1;
-                        } else {
-                            logString = `${logString} Request Deny\n`;
+                    clientManaged = {};
+                    //下一次监听为普通监听
+                } else {
+                    // 将管理端发送来的消息以'|'符号进行分割存入数组，如TEST-CLIENT|OPEN
+                    let adminArray = dataString.split('|');
+                    // 用于判断管理端发送的命令中管理客户端对象是否存在
+                    let clientExist = 0;
+                    clientsInfo.forEach((item, index) => {
+                        if (adminArray[0] === item.Name) {
+                            if (adminArray[1] === 'OPEN') {
+                                socket.write('Enter the password for command:');
+                                console.log(`Waiting for the password to manage ${item.Name}...`);
+                                logString = `${logString};Response for password\n`;
+                                // 将下一次数据监听设为密码监听
+                                askForPwd = 1;
+                                clientManaged = item;
+                            } else {
+                                logString = `${logString};Request Deny\n`;
+                            }
+                            // 客户端存在
+                            clientExist = 1;
                         }
+                    });
+                    if (!clientExist) {
+                        console.log(`Client[${adminArray[0]}] does not exist`);
+                        logString = `${logString};Client does not exist\n`;
                     }
-                })
+                }
             } else {
-                logString = `${logString} Request Deny\n`;
+                logString = `${logString};Request Void\n`;
                 console.log(`Unexpected data[${clientName}]: ${dataString}`);
                 socket.write('2');
             }
-            // 将socket可读流中的信息处理后写入log文件
+
+            // 将logString写入log文件
             fs.appendFile('log.txt', logString, (err) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log('Data have been wrote in ./log.txt');
+                    console.log(`Data have been wrote in ./log.txt`);
                 }
             })
         }
@@ -100,9 +108,12 @@ let server = tls.createServer(options, (socket) => {
     socket.setKeepAlive(true);
     // 一旦客户端断开连接便发出警告
     socket.on('close', () => {
-        let index = sockets.indexOf(socket);
-        sockets.splice(index, 1);
-        clientsInfo.splice(index, 1);
+        clientsInfo.forEach((item, index) => {
+            if (item.socket === socket) {
+                console.log(`Clients ${item.Name} has been removed`);
+                clientsInfo.splice(index, 1);
+            }
+        });
         console.log(`WARNING:Connection[${clientName}] has closed,LOSING CONTROL...`);
     });
     // 客户端强制关闭时接住error不会导致服务器崩溃

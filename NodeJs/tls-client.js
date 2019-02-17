@@ -35,7 +35,15 @@ client.on('data', (data) => {
     console.log(`Got Data: ${data}`);
 });
 client.write('ADMIN');
-client.write('TEST-CLIENT|OPEN');
-client.write('12345');
-client.write('TEST-CLIENT|OPEN');
-client.write('123456');
+setTimeout(()=>{
+    client.write('CLIENT1|OPEN');
+    setTimeout(()=>{
+        client.write('CLIENT2|OPEN');
+        setTimeout(()=>{
+            client.write('TEST-CLIENT|OPEN');
+            setTimeout(()=>{
+                client.write('123456');
+            }, 1000)
+        },1000)
+    }, 1000)
+}, 1000);
