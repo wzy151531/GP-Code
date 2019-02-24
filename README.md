@@ -17,3 +17,5 @@
 3.merge the sockets array and clientsInfo array<br>
 4.add the judge of ADMIN's command for void client<br>
 5.add interval in each command of ADMIN(to simulate multiple times of ADMIN's commands)<br>
+### 2019-02-24
+1.use 'npm-init' to add package.json<br>
