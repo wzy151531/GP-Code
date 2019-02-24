@@ -1,0 +1,22 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tls-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/wzy151531/GP-Code.git"
+  },
+  "author": "Wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wzy151531/GP-Code/issues"
+  },
+  "homepage": "https://github.com/wzy151531/GP-Code#readme",
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
+}

@@ -1,5 +1,5 @@
 wifi.setmode(wifi.STATION)
-wifi.sta.config{ssid="ChinaNet-P3Mh",pwd="yrgd5fma"}
+wifi.sta.config{ssid="wzycs7017",pwd="wzyswez7017"}
 led1 = 0    --开门信号灯pin0
 led2 = 4    --拒绝访问信号灯pin4
 button = 3      --开门请求按钮pin3
@@ -28,7 +28,7 @@ tmr.alarm(1, 1000, tmr.ALARM_AUTO, function()   --将nodeMCU连入wifi，并获�
     else
         print('IP is ' .. wifi.sta.getip())
         sv = tls.createConnection()      --连入网络后，建立一个TLS客户端
-        sv:connect(8080, "192.168.1.16")    --连接到用nodejs建立的TLS服务器
+        sv:connect(8080, "192.168.1.101")    --连接到用nodejs建立的TLS服务器
         sv:on('connection', function(sck, c)
             sv:send('TEST-CLIENT')      --第一次连入服务器时发送自己的身份
         end)
