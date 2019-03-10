@@ -19,3 +19,5 @@
 5.add interval in each command of ADMIN(to simulate multiple times of ADMIN's commands)<br>
 ### 2019-02-24
 1.use 'npm-init' to add package.json<br>
+### 2019-03-11
+1.complete uart to wifi function and tested with 8 byte(F9 00 04 00 00 00 0D F9)<br>
