@@ -89,7 +89,10 @@ let server = tls.createServer(options, (socket) => {
                 }
             } else {
                 logString = `${logString};Request Void\n`;
-                console.log(`Unexpected data[${clientName}]: ${dataString}`);
+                let newData = Buffer.from(data);
+                // console.log(`typeof(data)=${typeof(data)}`);
+                // console.log(`Unexpected data[${clientName}]: ${newData.toString('hex')}`);
+                console.log(`Unexpected data[${clientName}]: ${data}`);
                 socket.write('2');
             }
 

@@ -15,3 +15,231 @@ Connection[ADMIN] sent:"TEST-CLIENT|OPEN"[2019-02-24 12:14:05];Response for pass
 Connection[ADMIN] sent:"123456"[2019-02-24 12:14:06] Request for access of [TEST-CLIENT];Request Allow
 Connection[TEST-CLIENT] sent:"open"[2019-02-24 12:14:51];Request Allow
 Connection[TEST-CLIENT] sent:"open"[2019-02-24 12:14:56];Request Allow
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 15:55:19];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:10:06];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:10:09];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:10:12];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:11:35];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:12:09];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:12:12];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:12:17];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:12:20];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:12:34];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:12:40];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:12:47];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:12:56];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:12:59];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:13:12];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:13:15];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:15:32];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:22:49];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:24:12];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:24:20];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:24:36];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:24:49];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:25:16];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:25:37];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:25:40];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:25:53];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:26:00];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:26:03];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:26:09];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:26:12];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:33:48];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:33:52];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:36:32];Request Void
+Connection[TEST-CLIENT] sent:"open"[2019-03-06 16:45:56];Request Allow
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:53:09];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:57:34];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 16:58:52];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:00:53];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:09:43];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:13:29];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:17:22];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:17:46];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:19:11];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:19:14];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:24:26];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:45:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:57:17];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:57:34];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:57:39];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:57:42];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:58:17];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:58:26];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-06 17:58:30];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 13:48:41];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 13:56:29];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 14:54:48];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 14:54:51];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 14:56:56];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 14:56:59];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 15:00:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 15:07:51];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 15:07:54];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 15:07:57];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 15:08:06];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 15:08:17];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 15:08:20];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 15:54:55];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 15:54:58];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:02:33];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:02:41];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:03:12];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:03:41];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:12:39];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:12:47];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:14:20];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:27:15];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:27:20];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:52:39];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:53:06];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:53:11];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 16:59:41];Request Void
+Connection[TEST-CLIENT] sent:"receive from uart:"[2019-03-10 17:00:15];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:01:42];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:01:55];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:09:48];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:13:52];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:13:57];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:16:40];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:17:53];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:18:11];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:20:17];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:20:22];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:22:19];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:27:02];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:27:18];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:27:24];Request Void
+Connection[TEST-CLIENT] sent:"��	"[2019-03-10 17:29:18];Request Void
+Connection[TEST-CLIENT] sent:"�	"[2019-03-10 17:30:08];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:33:17];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:33:33];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:33:37];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:35:37];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:36:05];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:42:08];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:44:16];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:48:53];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:53:02];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:54:29];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:54:44];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:54:44];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 17:56:10];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:35:10];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:35:15];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:36:23];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:45:17];Request Void
+Connection[TEST-CLIENT] sent:"��	 "[2019-03-10 22:46:12];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:46:24];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:48:08];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:48:12];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:48:37];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:48:49];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:50:36];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:50:41];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:50:46];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:50:50];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:50:57];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:51:01];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 22:51:08];Request Void
+Connection[TEST-CLIENT] sent:"F5 "[2019-03-10 23:03:15];Request Void
+Connection[TEST-CLIENT] sent:"F5 "[2019-03-10 23:03:24];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 23:38:04];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 23:38:17];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 23:39:51];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 23:40:02];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 23:40:08];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 23:43:39];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 23:53:12];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 23:53:22];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 23:54:44];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 23:54:53];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-10 23:57:10];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-11 00:08:40];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-11 00:08:44];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-11 00:15:03];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-11 00:15:08];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-11 00:15:35];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-11 00:15:39];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-11 00:15:49];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-11 00:15:59];Request Void
+Connection[TEST-CLIENT] sent:"�"[2019-03-11 00:24:15];Request Void
+Connection[TEST-CLIENT] sent:"F5 "[2019-03-11 00:36:13];Request Void
+Connection[TEST-CLIENT] sent:"F5 "[2019-03-11 00:36:18];Request Void
+Connection[TEST-CLIENT] sent:"              F5 "[2019-03-11 00:38:48];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:45:08];Request Void
+Connection[TEST-CLIENT] sent:"000000A1 "[2019-03-11 00:51:25];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:51:37];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:51:40];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:52:29];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:52:33];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:55:37];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:55:56];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 "[2019-03-11 00:55:59];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:56:06];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:56:11];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 "[2019-03-11 00:56:14];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:56:29];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 "[2019-03-11 00:56:32];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:56:37];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 "[2019-03-11 00:56:44];Request Void
+Connection[TEST-CLIENT] sent:"000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 000000F5 00000009 00000000 00000004 00000000 00000000 0000000D 000000F5 "[2019-03-11 00:56:47];Request Void
+Connection[TEST-CLIENT] sent:"00000070 "[2019-03-11 00:57:47];Request Void
+Connection[TEST-CLIENT] sent:"F5 "[2019-03-11 00:58:26];Request Void
+Connection[TEST-CLIENT] sent:"F5 09 00 04 00 00 0D F5 "[2019-03-11 00:58:29];Request Void
+Connection[TEST-CLIENT] sent:"F5 "[2019-03-11 00:58:37];Request Void
+Connection[TEST-CLIENT] sent:"F5 09 00 04 00 00 0D F5 "[2019-03-11 00:58:40];Request Void
+Connection[TEST-CLIENT] sent:"F5 "[2019-03-11 01:00:01];Request Void
+Connection[TEST-CLIENT] sent:"F5 09 00 04 00 00 0D F5 "[2019-03-11 01:00:04];Request Void
+Connection[TEST-CLIENT] sent:"F5 09 00 04 00 00 0D F5 "[2019-03-11 01:02:00];Request Void
