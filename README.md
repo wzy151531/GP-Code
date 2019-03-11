@@ -21,3 +21,4 @@
 1.use 'npm-init' to add package.json<br>
 ### 2019-03-11
 1.complete uart to wifi function and tested with 8 byte(F9 00 04 00 00 00 0D F9)<br>
+2.complete the function that extracts characteristic value from finger to server(207 byte)<br> 

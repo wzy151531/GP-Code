@@ -1,9 +1,6 @@
---gpio.write(7, gpio.HIGH)
---gpio.write(8, gpio.HIGH)
---uart.alt(1)
 uart.setup(0, 19200, 8, uart.PARITY_NONE, uart.STOPBITS_1, 0)
 uart.setup(1, 115200, 8, uart.PARITY_NONE, uart.STOPBITS_1, 0)
-uart.write(1, "hellow")
+uart.write(1, "hellow")     --work
 t = require("tools")
 
 wifi.setmode(wifi.STATION)
@@ -36,21 +33,18 @@ tmr.alarm(1, 1000, tmr.ALARM_AUTO, function()   --将nodeMCU连入wifi，并获�
         uart.write(1, "Waiting for IP ...")     --doesn't work
     else
         --print('IP is ' .. wifi.sta.getip())
-        uart.write(1, "IP is" .. wifi.sta.getip())
+        uart.write(1, "IP is" .. wifi.sta.getip())      --doesn't work
         sv = tls.createConnection()      --连入网络后，建立一个TLS客户端
         sv:connect(8080, "192.168.1.101")    --连接到用nodejs建立的TLS服务器
-        uart.on("data", 8, function(data)   --注册串口收到数据时的回调
+        uart.on("data", 207, function(data)   --注册串口收到数据时的回调
                 sv:send(t.bin2hex(data))               --将串口接收到的数据通过wifi传给服务器
-                uart.write(1, 0x01, 0x02, 0x03, 0x04, 0x05)
-                uart.write(0, data)
-                --uart.write(1, data)
+                --uart.write(0, data)
                 if data == "quit" then
                     uart.on("data")     --unregister callback function
                 end
         end, 0)
         sv:on('connection', function(sck, c)
             sv:send('TEST-CLIENT')      --第一次连入服务器时发送自己的身份
-            --uart.write(0, t.DATA_START, 0x09, 0x00, 0x00, 0x00, 0x00, t.CmdGenCHK({"09", "00", "00", "00", "00"}), t.DATA_END)
         end)
         sv:on("receive", receiver)      --注册回调事件
         tmr.stop(1)
@@ -63,8 +57,8 @@ function ledTrg()   --pin3低电平产生中断时的回调
     tmr.alarm(1, 1000, tmr.ALARM_AUTO, function()
         if i == 0 and cnt == 0 then
             --sv:send('open')
-            uart.write(0, 0xf5, 0x09, 0x00, 0x00, 0x00, 0x00, 0x09, 0xf5)
-            --uart.write(0, "")
+            uart.write(0, 0xf5, 0x23, 0x00, 0x00, 0x00, 0x00, 0x23, 0xf5)
+            --uart.write(0, t.DATA_START, 0x09, 0x00, 0x00, 0x00, 0x00, t.CmdGenCHK({"09", "00", "00", "00", "00"}), t.DATA_END)
             cnt = cnt + 1
         else
             cnt = 0
