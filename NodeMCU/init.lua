@@ -43,9 +43,9 @@ tmr.alarm(1, 1000, tmr.ALARM_AUTO, function()   --将nodeMCU连入wifi，并获�
         uart.on("data", 215, function(data)   --注册串口收到数据时的回调
                 local collect = gpio.read(collectButton)
                 if collect == 0 then
-                    sv:send("C " .. t.bin2hex(data))               --若采集指纹按钮按下，则视为指纹采集(collect)，将串口接收到的二进制数据转为hex字符串通过wifi传给服务器
+                    sv:send("R " .. t.bin2hex(data))               --若采集指纹按钮按下，则视为指纹采集(collect)，将串口接收到的二进制数据转为hex字符串通过wifi传给服务器
                 else
-                    sv:send("R " .. t.bin2hex(data))               --若采集指纹按钮未按下，则视为指纹识别(recognition)，将串口接收到的二进制数据转为hex字符串通过wifi传给服务器
+                    sv:send("C " .. t.bin2hex(data))               --若采集指纹按钮未按下，则视为指纹识别(recognition)，将串口接收到的二进制数据转为hex字符串通过wifi传给服务器
                 end
                 if data == "quit" then
                     uart.on("data")     --unregister callback function
@@ -77,7 +77,7 @@ function touchTrg()   --当指纹模块受到按压时输出高电平，指纹�
         --gpio.write(fpcVCC, gpio.LOW)
         --gpio.write(led2, gpio.HIGH)
     --end)
-    tmr.delay(4000000)
+    tmr.delay(2000000)
     gpio.write(fpcVCC, gpio.LOW)
     gpio.write(led2, gpio.HIGH)
 end

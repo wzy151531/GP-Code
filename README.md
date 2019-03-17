@@ -25,3 +25,5 @@
 ### 2019-03-16
 1.complete the recognition function that uses touching fpc1020A interrupt to wake up the fpc1020A and extract characteristic value to server('R' + 215 byte)<br>
 2.complete the collect function that collects the finger characteristic value by pressing the button(pin3) when recognition('C' + 215 byte)<br>
+### 2019-03-17
+1.collect fingerprint features to train a matching template<br>

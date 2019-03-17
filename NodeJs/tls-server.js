@@ -1,6 +1,7 @@
 let tls = require('tls');
 let fs = require('fs');
 let moment = require('moment');
+let math = require('math');
 moment.locale('zh-cn');
 // 聚合所有客户端的IP地址和名称和socket
 let clientsInfo = [];
@@ -15,6 +16,7 @@ let options = {
 
 let server = tls.createServer(options, (socket) => {
     let cnt = 1;
+    let collectCnt = 4*9+4;
     // 监听模式标志位
     let askForPwd = 0;
     // 管理端要管理的客户端对象
@@ -37,12 +39,8 @@ let server = tls.createServer(options, (socket) => {
             // 客户端之后发送的信息由服务器进行处理并返回，且将信息写入log文件
         } else {
             let logString = `Connection[${clientName}] sent:"${dataString}"[${moment().format('YYYY-MM-DD HH:mm:ss')}]`;
-            if (dataString === 'open') {
-                logString = `${logString};Request Allow\n`;
-                console.log(`Got[${clientName}]: ${dataString}`);
-                socket.write('1');
-                // 管理端可以通过发送指定消息操作任意客户端
-            } else if (clientName === 'ADMIN' && socket.authorized) {
+            // 若发送消息者为管理端
+            if (clientName === 'ADMIN' && socket.authorized) {
                 console.log(`Got[${clientName}]: ${dataString}`);
                 // 若下一次数据监听为密码监听
                 if (askForPwd) {
@@ -87,13 +85,35 @@ let server = tls.createServer(options, (socket) => {
                         logString = `${logString};Client does not exist\n`;
                     }
                 }
+            } else if (clientName === 'TEST-CLIENT') {
+                // 将收到的16进制字符串通过空格分离成数组
+                let dataArray = data.split(' ');
+                // 将有效数据部分提出
+                let realDataArray = dataArray.slice(21, -3);
+                let realData = realDataArray.join(' ') + '\n';
+                // 若为识别此指纹特征值
+                if (dataArray[0] === 'R') {
+                    logString = `${logString};Request Void Temporarily\n`;
+                    console.log(`Recognize fingerprint feature[${clientName}]: ${data}`)
+                    // 若为采集此指纹特征值
+                } else if (dataArray[0] === 'C') {
+                    logString = `${logString};Request Allow\n`;
+                    console.log(`Collect fingerprint feature[${clientName}]: ${data}`);
+                    let fileNameCnt = math.floor(collectCnt / 4);
+                    let fileName = `./fingerprint_feature/true/${fileNameCnt}.txt`;
+                    fs.appendFile(fileName, realData, (err) => {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            console.log(`Fingerprint feature have been wrote in ${fileName}`)
+                        }
+                    });
+                    collectCnt++;
+                }
             } else {
-                logString = `${logString};Request Void\n`;
-                let newData = Buffer.from(data);
-                // console.log(`typeof(data)=${typeof(data)}`);
-                // console.log(`Unexpected data[${clientName}]: ${newData.toString('hex')}`);
-                console.log(`Unexpected data[${clientName}]: ${data}`);
-                socket.write('2');
+                logString = `${logString};Request Deny\n`;
+                console.log(`Unknown data[${clientName}]: ${data}`);
+                socket.write('UNKNOWN CLIENT,REQUEST DENY!');
             }
 
             // 将logString写入log文件
@@ -101,7 +121,7 @@ let server = tls.createServer(options, (socket) => {
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log(`Data have been wrote in ./log.txt`);
+                    console.log('Data have been wrote in ./log.txt');
                 }
             })
         }
