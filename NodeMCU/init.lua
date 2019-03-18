@@ -4,7 +4,7 @@ uart.write(1, "hellow")     --work
 t = require("tools")
 
 wifi.setmode(wifi.STATION)
-wifi.sta.config{ssid="wzycs7017",pwd="wzyswez7017"}
+wifi.sta.config{ssid="sdy",pwd="Wzy19970515"}
 led1 = 0    --开门信号灯pin0
 led2 = 4    --拒绝访问信号灯pin4
 collectButton = 3      --采集指纹特征值按钮pin3
