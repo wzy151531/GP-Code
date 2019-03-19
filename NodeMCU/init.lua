@@ -4,7 +4,7 @@ uart.write(1, "hellow")     --work
 t = require("tools")
 
 wifi.setmode(wifi.STATION)
-wifi.sta.config{ssid="sdy",pwd="Wzy19970515"}
+wifi.sta.config{ssid="sdy151531",pwd="Wzy19970515"}
 led1 = 0    --开门信号灯pin0
 led2 = 4    --拒绝访问信号灯pin4
 collectButton = 3      --采集指纹特征值按钮pin3
@@ -39,7 +39,7 @@ tmr.alarm(1, 1000, tmr.ALARM_AUTO, function()   --将nodeMCU连入wifi，并获�
         --print('IP is ' .. wifi.sta.getip())
         uart.write(1, "IP is" .. wifi.sta.getip())      --doesn't work
         sv = tls.createConnection()      --连入网络后，建立一个TLS客户端
-        sv:connect(8080, "192.168.1.101")    --连接到用nodejs建立的TLS服务器
+        sv:connect(8080, "192.168.43.175")    --连接到用nodejs建立的TLS服务器
         uart.on("data", 215, function(data)   --注册串口收到数据时的回调
                 local collect = gpio.read(collectButton)
                 if collect == 0 then

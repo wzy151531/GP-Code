@@ -1,5 +1,10 @@
 wifi.setmode(wifi.STATION)
-wifi.sta.config{ssid="ChinaNet-P3Mh",pwd="yrgd5fma"}
+--wifi.sta.config{ssid="sdy151531",pwd="Wzy19970515"}
+station_cfg = {}
+station_cfg.ssid = "iPhone"
+station_cfg.pwd = "542135712"
+wifi.sta.config(station_cfg)
+--wifi.sta.connect()
 led1 = 0    --开门信号灯pin0
 led2 = 4    --拒绝访问信号灯pin4
 button = 3      --开门请求按钮pin3
@@ -28,7 +33,7 @@ tmr.alarm(1, 1000, tmr.ALARM_AUTO, function()   --将nodeMCU连入wifi，并获�
     else
         print('IP is ' .. wifi.sta.getip())
         sv = net.createConnection(net.TCP, 0)      --连入网络后，建立一个TCP客户端，0表示不加密
-        sv:connect(8080, "192.168.1.7")    --连接到用nodejs建立的TCP服务器
+        sv:connect(8080, "192.168.43.175")    --连接到用nodejs建立的TCP服务器
         sv:on("receive", receiver)      --注册回调事件
         tmr.stop(1)
     end

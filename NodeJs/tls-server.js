@@ -16,7 +16,8 @@ let options = {
 
 let server = tls.createServer(options, (socket) => {
     let cnt = 1;
-    let collectCnt = 4*9+4;
+    // let collectCnt = 4*29+4;
+    let collectCnt = 4*66+4;
     // 监听模式标志位
     let askForPwd = 0;
     // 管理端要管理的客户端对象
