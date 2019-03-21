@@ -27,3 +27,8 @@
 2.complete the collect function that collects the finger characteristic value by pressing the button(pin3) when recognition('C' + 215 byte)<br>
 ### 2019-03-17
 1.collect fingerprint features to train a matching template<br>
+### 2019-03-20
+1.merge branch demo and branch master<br>
+### 2019-03-21
+1.streamlined init.lua<br>
+2.add recognition algorithm(logistic) in server(!todo:still has problem with the parameters)<br>
