@@ -32,3 +32,6 @@
 ### 2019-03-21
 1.streamlined init.lua<br>
 2.add recognition algorithm(logistic) in server(!todo:still has problem with the parameters)<br>
+### 2019-04-10
+1.organize the whole folder after the mid-term inspection<br>
+2.decide to use another 1020A as a matching client to match the fingerprint features and to store the fingerprint features<br>

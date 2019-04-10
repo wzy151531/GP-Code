@@ -16,9 +16,6 @@ let options = {
 
 let server = tls.createServer(options, (socket) => {
     let cnt = 1;
-    let collectCnt = 1;
-    // 将采集到的三次指纹合并为一个字符串放进collectData中
-    let collectData = '';
     // 监听模式标志位
     let askForPwd = 0;
     // 管理端要管理的客户端对象
@@ -98,46 +95,22 @@ let server = tls.createServer(options, (socket) => {
                 if (dataArray[0] === 'R') {
                     logString = `${logString};Request Void Temporarily\n`;
                     console.log(`Recognize fingerprint feature[${clientName}]: ${data}`);
-                    // 将指纹特征值模板文件中所有模板读入到templetData
-                    let templetData = '';
-                    // 将读取到的templetData由'\n'分割成各个模板放入数组templetArray中
-                    let templetArray = [];
-                    fs.readFile(fileName, 'utf8', (err, data) => {
-                        if (err) {
-                            console.log(err);
-                        } else {
-                            templetData = data;
-                            templetArray = templetData.split('\n');
-                            templetArray = templetArray.slice(0, -1);
-                            console.log(`TempletData of fingerprint feature have been read(${templetArray.length} data)`);
-                            for (let i = 0; i < templetArray.length; i++) {
-                                console.log(`templetArray[${i}]=${templetArray[i]}`);
-                            }
-                            calculate.matchingFeature(templetArray, realData);
-                        }
-                    });
+                    // !todo 将收到的特征值传给匹配端进行匹配
+
                     // 若为采集此指纹特征值
                 } else if (dataArray[0] === 'C') {
                     logString = `${logString};Request Allow\n`;
                     console.log(`Collect fingerprint feature[${clientName}]: ${data}`);
-                    let appendFileCnt = collectCnt % 3;
-                    if (appendFileCnt === 1) {
-                        collectData = realData;
-                    } else if (appendFileCnt === 2) {
-                        collectData = `${collectData} ${realData}`;
-                    } else if (appendFileCnt === 0) {
-                        collectData = `${collectData} ${realData}\n`;
-                        // 当三次指纹采集完成后才将数据写进文件
-                        fs.appendFile(fileName, collectData, (err) => {
-                            if (err) {
-                                console.log(err);
-                            } else {
-                                console.log(`Fingerprint feature have been wrote in ${fileName}`);
-                                collectData = '';
-                            }
-                        });
-                    }
-                    collectCnt++;
+                    // !todo 将收到的特征值传给匹配端进行储存
+
+                    realData = `${realData}\n`;
+                    fs.appendFile(fileName, realData, (err) => {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            console.log(`Fingerprint feature has been wrote in ${fileName}`);
+                        }
+                    })
                 }
             } else {
                 logString = `${logString};Request Deny\n`;

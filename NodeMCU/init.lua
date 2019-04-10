@@ -36,14 +36,15 @@ tmr.alarm(1, 1000, tmr.ALARM_AUTO, function()   --将nodeMCU连入wifi，并获�
         gpio.write(led2, (gpio.read(led2) + 1) % 2)     --等待接入wifi时，led2闪烁
     else
         --print('IP is ' .. wifi.sta.getip())
+        gpio.write(led2, gpio.HIGH)      --连入网络后，led2熄灭
         sv = tls.createConnection()      --连入网络后，建立一个TLS客户端
         sv:connect(8080, "192.168.1.101")    --连接到用nodejs建立的TLS服务器
         uart.on("data", 215, function(data)   --注册串口收到数据时的回调
                 local collect = gpio.read(collectButton)
                 if collect == 0 then
-                    sv:send("C " .. t.bin2hex(data))               --若采集指纹按钮按下，则视为指纹采集(collect)，将串口接收到的二进制数据转为hex字符串通过wifi传给服务器
+                    sv:send("R " .. t.bin2hex(data))               --若采集指纹按钮按下，则视为指纹采集(collect)，将串口接收到的二进制数据转为hex字符串通过wifi传给服务器
                 else
-                    sv:send("R " .. t.bin2hex(data))               --若采集指纹按钮未按下，则视为指纹识别(recognition)，将串口接收到的二进制数据转为hex字符串通过wifi传给服务器
+                    sv:send("C " .. t.bin2hex(data))               --若采集指纹按钮未按下，则视为指纹识别(recognition)，将串口接收到的二进制数据转为hex字符串通过wifi传给服务器
                 end
                 if data == "quit" then
                     uart.on("data")     --unregister callback function
