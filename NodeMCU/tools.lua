@@ -45,7 +45,7 @@ function Xor(num1,num2)
 	local len 
 	local tmp = ""
 	str1,str2,len = makesamelength(num1,num2)
-	for i=1,len do
+	for i = 1, len do
 		local s1 = string.sub(str1,i,i)
 		local s2 = string.sub(str2,i,i)
 		if s1 == s2 then
@@ -59,6 +59,7 @@ function Xor(num1,num2)
 end
 
 --定义以下公有函数供其它文件调用
+--返回指定数组所有元素的异或值和
 function tools.CmdGenCHK(arr)
     local i
     local temp = 0
@@ -70,9 +71,27 @@ function tools.CmdGenCHK(arr)
     return temp
 end
 
+--将二进制数据流转成16进制字符串
 function tools.bin2hex(s)
     s=string.gsub(s,"(.)",function (x) return string.format("%02X ",string.byte(x)) end)
     return s
+end
+
+--将16进制字符串转成二进制数据流
+function tools.hex2bin( hexstr )
+    local s = string.gsub(hexstr, "(.)(.)%s", function ( h, l )
+         return string.char(h2b[h]*16+h2b[l])
+    end)
+    return s
+end
+
+--字符串分割函数，返回字符串数组
+function tools.split(str, reps)
+	local resultStrList = {}
+    string.gsub(str,'[^'..reps..']+',function ( w )
+        table.insert(resultStrList,w)
+    end)
+    return resultStrList
 end
 
 tools.DATA_START = 0xf5

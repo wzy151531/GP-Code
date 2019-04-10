@@ -1,11 +1,17 @@
-let tls = require('tls');
-let fs = require('fs');
-let moment = require('moment');
-let calculate = require('./calculate');
+const tls = require('tls');
+const fs = require('fs');
+const {StringDecoder} = require('string_decoder');
+const decoder = new StringDecoder('utf8');
+const moment = require('moment');
 moment.locale('zh-cn');
 // 聚合所有客户端的IP地址和名称和socket
-let clientsInfo = [];
-let options = {
+const clientsInfo = [];
+// 将匹配端socket存放便于调用
+let matchingSocket = {};
+// 启动服务器时读取当前用户数量存入userCount中
+let userArray = decoder.write(fs.readFileSync('./fingerprint_feature/users.txt')).split('\n');
+let userCount = userArray.length - 1;
+const options = {
     key: fs.readFileSync('openssl/server-key.pem'),
     cert: fs.readFileSync('openssl/server-cert.pem'),
     ca: [fs.readFileSync('openssl/ca-cert.pem')],
@@ -28,6 +34,9 @@ let server = tls.createServer(options, (socket) => {
         // 客户端第一次发送信息给服务器，申明自己的身份
         if (cnt === 1) {
             clientName = dataString;
+            if (clientName === 'MATCHING') {
+                matchingSocket = socket;
+            }
             let certainClientInfo = {};
             certainClientInfo.socket = socket;
             certainClientInfo.IP = socket.remoteAddress;
@@ -84,6 +93,8 @@ let server = tls.createServer(options, (socket) => {
                         logString = `${logString};Client does not exist\n`;
                     }
                 }
+            } else if (clientName === 'MATCHING') {
+                console.log(`Receive data from MATCHING: ${data}`);
             } else if (clientName === 'TEST-CLIENT') {
                 // 将收到的16进制字符串通过空格分离成数组
                 let dataArray = data.split(' ');
@@ -95,14 +106,27 @@ let server = tls.createServer(options, (socket) => {
                 if (dataArray[0] === 'R') {
                     logString = `${logString};Request Void Temporarily\n`;
                     console.log(`Recognize fingerprint feature[${clientName}]: ${data}`);
-                    // !todo 将收到的特征值传给匹配端进行匹配
-
+                    // !todo 将收到的特征值及客户端名称传给匹配端进行匹配
+                    if (matchingSocket === {}) {
+                        console.log('Matching client does not exist');
+                    } else {
+                        // 将收到的特征值及客户端名称传给匹配端进行匹配
+                        matchingSocket.write(`R|${clientName}|${realData}`);
+                        console.log(`Sent recognizing data to matching client:R|${clientName}|${realData}`);
+                    }
                     // 若为采集此指纹特征值
                 } else if (dataArray[0] === 'C') {
                     logString = `${logString};Request Allow\n`;
                     console.log(`Collect fingerprint feature[${clientName}]: ${data}`);
-                    // !todo 将收到的特征值传给匹配端进行储存
-
+                    // !todo 将收到的特征值加上用户编号及权限传给匹配端进行储存
+                    if (matchingSocket === {}) {
+                        console.log('Matching client does not exist');
+                    } else {
+                        // 将收到的特征值及用户编号及权限传给匹配端进行储存
+                        matchingSocket.write(`C|${userCount}|${realData}|1`);
+                        console.log(`Sent collecting data to matching client:C|${realData}|1`);
+                        userCount++;
+                    }
                     realData = `${realData}\n`;
                     fs.appendFile(fileName, realData, (err) => {
                         if (err) {
