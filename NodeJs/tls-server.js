@@ -3,14 +3,16 @@ const fs = require('fs');
 const {StringDecoder} = require('string_decoder');
 const decoder = new StringDecoder('utf8');
 const moment = require('moment');
+const calculate = require('./deepLearningTry/calculate');
 moment.locale('zh-cn');
 // 聚合所有客户端的IP地址和名称和socket
 const clientsInfo = [];
-// 将匹配端socket存放便于调用
-let matchingSocket = {};
-// 启动服务器时读取当前用户数量存入userCount中
-let userArray = decoder.write(fs.readFileSync('./fingerprint_feature/users.txt')).split('\n');
-let userCount = userArray.length - 1;
+// 采集用于深度学习的数据个数计数
+let collectCount = 241;
+// 分析数据总个数
+let analyseCount = 1;
+// 分析数据中错误的个数
+let analyseWrongCount = 0;
 const options = {
     key: fs.readFileSync('openssl/server-key.pem'),
     cert: fs.readFileSync('openssl/server-cert.pem'),
@@ -34,9 +36,6 @@ let server = tls.createServer(options, (socket) => {
         // 客户端第一次发送信息给服务器，申明自己的身份
         if (cnt === 1) {
             clientName = dataString;
-            if (clientName === 'MATCHING') {
-                matchingSocket = socket;
-            }
             let certainClientInfo = {};
             certainClientInfo.socket = socket;
             certainClientInfo.IP = socket.remoteAddress;
@@ -93,48 +92,68 @@ let server = tls.createServer(options, (socket) => {
                         logString = `${logString};Client does not exist\n`;
                     }
                 }
-            } else if (clientName === 'MATCHING') {
-                console.log(`Receive data from MATCHING: ${data}`);
             } else if (clientName === 'TEST-CLIENT') {
                 // 将收到的16进制字符串通过空格分离成数组
                 let dataArray = data.split(' ');
                 // 将有效数据部分提出
                 let realDataArray = dataArray.slice(21, -3);
                 let realData = realDataArray.join(' ');
-                let fileName = './fingerprint_feature/users.txt';
+                let fileName = './fingerprint_feature/onlyMe/false.txt';
                 // 若为识别此指纹特征值
-                if (dataArray[0] === 'R') {
+                // !todo 为配合nodeMCU代码 CRA互换
+                if (dataArray[0] === 'C') {
                     logString = `${logString};Request Void Temporarily\n`;
                     console.log(`Recognize fingerprint feature[${clientName}]: ${data}`);
-                    // !todo 将收到的特征值及客户端名称传给匹配端进行匹配
-                    if (matchingSocket === {}) {
-                        console.log('Matching client does not exist');
+                    console.log(`The matching rate of realData is ${calculate.matchingFeature(realData)}`);
+                    if (calculate.matchingFeature(realData) > 0.9) {
+                        console.log(`Request[${clientName}] Allow`);
+                        logString = `${logString};Request Allow\n`;
+                        socket.write('1');
                     } else {
-                        // 将收到的特征值及客户端名称传给匹配端进行匹配
-                        matchingSocket.write(`R|${clientName}|${realData}`);
-                        console.log(`Sent recognizing data to matching client:R|${clientName}|${realData}`);
+                        console.log(`Request[${clientName}] Deny`);
+                        logString = `${logString};Request Deny\n`;
+                        socket.write('2');
                     }
                     // 若为采集此指纹特征值
-                } else if (dataArray[0] === 'C') {
+                } else if (dataArray[0] === 'R') {
                     logString = `${logString};Request Allow\n`;
                     console.log(`Collect fingerprint feature[${clientName}]: ${data}`);
-                    // !todo 将收到的特征值加上用户编号及权限传给匹配端进行储存
-                    if (matchingSocket === {}) {
-                        console.log('Matching client does not exist');
-                    } else {
-                        // 将收到的特征值及用户编号及权限传给匹配端进行储存
-                        matchingSocket.write(`C|${userCount}|${realData}|1`);
-                        console.log(`Sent collecting data to matching client:C|${realData}|1`);
-                        userCount++;
-                    }
                     realData = `${realData}\n`;
                     fs.appendFile(fileName, realData, (err) => {
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log(`Fingerprint feature has been wrote in ${fileName}`);
+                            console.log(`${collectCount}th fingerprint feature has been wrote in ${fileName}`);
+                            collectCount++;
                         }
                     })
+                } else if (dataArray[0] === 'A') {
+                    logString = `${logString};Analyze data\n`;
+                    console.log(`Analyze fingerprint feature[${clientName}]: ${realData}`);
+                    console.log(`The matching rate of ${analyseCount}th data is ${calculate.matchingFeature(realData)}`);
+                    let analyseType = 'True';
+                    let fileName = `./fingerprint_feature/analyse${analyseType}`;
+                    fs.appendFile(fileName, calculate.matchingFeature(realData), (err) => {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            console.log(`${analyseCount}th data analyse has been wrote in ${fileName}`)
+                        }
+                    });
+                    // 分析拒真率
+                    if (analyseType === 'True') {
+                        if (calculate.matchingFeature(realData) < 0.9) {
+                            analyseWrongCount++;
+                        }
+                        console.log(`Rejection rate is ${analyseWrongCount / analyseCount}`);
+                        // 分析误判率
+                    } else if (analyseType === 'Wrong') {
+                        if (calculate.matchingFeature(realData) > 0.9) {
+                            analyseWrongCount++;
+                        }
+                        console.log(`Misjudgement rate is ${analyseWrongCount / analyseCount}`);
+                    }
+                    analyseCount++;
                 }
             } else {
                 logString = `${logString};Request Deny\n`;

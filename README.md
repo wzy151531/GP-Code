@@ -37,3 +37,6 @@
 2.decide to use another 1020A as a matching client to match the fingerprint features and to store the fingerprint features<br>
 ### 2019-04-11
 1.add matching client code and corresponding server code(not tested)<br>
+### 2019-04-15
+1.because the memory of NodeMCU is not enough,the previous plan of matching client has been ended(the fingerprint feature is too long to send to the fpc1020A)<br>
+2.decide to train a single matching template(my right thumb only),now using 300 true fingerprint features and 300 wrong fingerprint features with 26.9%(7/26) rejection rate and 30.7%(8/26) misjudgement rate<br>
