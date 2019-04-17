@@ -40,3 +40,6 @@
 ### 2019-04-15
 1.because the memory of NodeMCU is not enough,the previous plan of matching client has been ended(the fingerprint feature is too long to send to the fpc1020A)<br>
 2.decide to train a single matching template(my right thumb only),now using 300 true fingerprint features and 300 wrong fingerprint features with 26.9%(7/26) rejection rate and 30.7%(8/26) misjudgement rate<br>
+### 2019-04-17
+1.add each 200 groups fingerprint features to true and false file to improve the train accuracy<br>
+2.use each 200 groups fingerprint features to test the matching template:rejection rate is 40.5%(81/200),misjudgement rate is 25%(50/200)<br>

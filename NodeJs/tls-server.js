@@ -8,7 +8,7 @@ moment.locale('zh-cn');
 // 聚合所有客户端的IP地址和名称和socket
 const clientsInfo = [];
 // 采集用于深度学习的数据个数计数
-let collectCount = 241;
+let collectCount = 501;
 // 分析数据总个数
 let analyseCount = 1;
 // 分析数据中错误的个数
@@ -71,7 +71,7 @@ let server = tls.createServer(options, (socket) => {
                     let adminArray = dataString.split('|');
                     // 用于判断管理端发送的命令中管理客户端对象是否存在
                     let clientExist = 0;
-                    clientsInfo.forEach((item, index) => {
+                    clientsInfo.forEach((item) => {
                         if (adminArray[0] === item.Name) {
                             if (adminArray[1] === 'OPEN') {
                                 socket.write('Enter the password for command:');
@@ -100,8 +100,8 @@ let server = tls.createServer(options, (socket) => {
                 let realData = realDataArray.join(' ');
                 let fileName = './fingerprint_feature/onlyMe/false.txt';
                 // 若为识别此指纹特征值
-                // !todo 为配合nodeMCU代码 CRA互换
-                if (dataArray[0] === 'C') {
+                // !todo 为配合NodeMCU代码 CRA互换
+                if (dataArray[0] === 'R') {
                     logString = `${logString};Request Void Temporarily\n`;
                     console.log(`Recognize fingerprint feature[${clientName}]: ${data}`);
                     console.log(`The matching rate of realData is ${calculate.matchingFeature(realData)}`);
@@ -115,7 +115,7 @@ let server = tls.createServer(options, (socket) => {
                         socket.write('2');
                     }
                     // 若为采集此指纹特征值
-                } else if (dataArray[0] === 'R') {
+                } else if (dataArray[0] === 'A') {
                     logString = `${logString};Request Allow\n`;
                     console.log(`Collect fingerprint feature[${clientName}]: ${data}`);
                     realData = `${realData}\n`;
@@ -127,17 +127,18 @@ let server = tls.createServer(options, (socket) => {
                             collectCount++;
                         }
                     })
-                } else if (dataArray[0] === 'A') {
+                } else if (dataArray[0] === 'C') {
                     logString = `${logString};Analyze data\n`;
-                    console.log(`Analyze fingerprint feature[${clientName}]: ${realData}`);
+                    console.log(`Analyze fingerprint feature[${clientName}]: ${data}`);
                     console.log(`The matching rate of ${analyseCount}th data is ${calculate.matchingFeature(realData)}`);
-                    let analyseType = 'True';
-                    let fileName = `./fingerprint_feature/analyse${analyseType}`;
-                    fs.appendFile(fileName, calculate.matchingFeature(realData), (err) => {
+                    let analyseType = 'False';
+                    let fileName = `./fingerprint_feature/analyse${analyseType}300.txt`;
+                    fs.appendFile(fileName, `${calculate.matchingFeature(realData)}\n`, (err) => {
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log(`${analyseCount}th data analyse has been wrote in ${fileName}`)
+                            console.log(`${analyseCount}th data analyse has been wrote in ${fileName}`);
+                            analyseCount++;
                         }
                     });
                     // 分析拒真率
@@ -145,15 +146,25 @@ let server = tls.createServer(options, (socket) => {
                         if (calculate.matchingFeature(realData) < 0.9) {
                             analyseWrongCount++;
                         }
-                        console.log(`Rejection rate is ${analyseWrongCount / analyseCount}`);
+                        console.log(`Rejection rate is ${(analyseWrongCount / analyseCount)*100}%(${analyseWrongCount}/${analyseCount})`);
                         // 分析误判率
-                    } else if (analyseType === 'Wrong') {
+                    } else if (analyseType === 'False') {
                         if (calculate.matchingFeature(realData) > 0.9) {
                             analyseWrongCount++;
                         }
-                        console.log(`Misjudgement rate is ${analyseWrongCount / analyseCount}`);
+                        console.log(`Misjudgement rate is ${(analyseWrongCount / analyseCount)*100}%(${analyseWrongCount}/${analyseCount})`);
                     }
-                    analyseCount++;
+
+                    fileName = './fingerprint_feature/onlyMe/false.txt';
+                    realData = `${realData}\n`;
+                    fs.appendFile(fileName, realData, (err) => {
+                        if (err) {
+                            console.log(err);
+                        } else {
+                            console.log(`${collectCount}th fingerprint feature has been wrote in ${fileName}`);
+                            collectCount++;
+                        }
+                    })
                 }
             } else {
                 logString = `${logString};Request Deny\n`;
