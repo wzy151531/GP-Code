@@ -1,4 +1,21 @@
-# GP-Code
+# GraduationProject Code
+## Intro
+This project aim to mainly use NodeMCU and Node.js to create a fingerprint lock based on IOT
+## Quick Start
+### Version
+This project use win10,Node.js v10.0.0,npm v5.6.0,Python v3.7.3
+### Tools
+WebStorm,VS Code,esplorer,nodemcu-flasher-master
+### Install
+1.use nodemcu-flasher-master to flash firmware in NodeMCU
+2.install CP210x Driver
+3.use micro-usb connect NodeMCU and PC
+4.use esplorer to upload the script file to NodeMCU
+5.after cloning the project,use 'npm install' to install the dependencies
+6.use 'node ./tls-server' to run the server
+7.NodeMCU power on
+8.use 'node ./tls-client' to run the manage client
+## Change Log
 ### 2019-02-14
 1.change tcp-server to tls-server to encrypt the data<br>
 2.add log.txt in NodeJs to record the info that accepted by server<br>
